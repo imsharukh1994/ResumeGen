@@ -203,4 +203,43 @@ function saveresume() {
   value1 = sec.innerHTML;
   var info = document.getElementById("custinfo");
   info.value = value1;
+<!-- Existing content... -->
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.0/html2pdf.bundle.min.js"></script>
+
+<!-- Your custom script.js -->
+<script>
+// Your functions like printpdf, addedu, remedu, etc.
+function printpdf() {
+  var content = document.getElementById("resume");
+
+  const allButtons = document.querySelectorAll("#print button");
+  allButtons.forEach(button => {
+      button.classList.add("none");
+  });
+  let allInputCheckboxes = document.querySelectorAll(".input-checkbox");
+  allInputCheckboxes.forEach(input => {
+      input.classList.add("none");
+  });
+
+  allButtons.forEach(button => {
+    button.classList.remove("none");
+  });
+  allInputCheckboxes.forEach(input => {
+    input.classList.remove("none");
+  });
+
+  html2pdf(content, {
+      html2canvas: { scale: 1, logging: true, dpi: 500 }
+  });
+}
+
+// Other functions (addedu, remedu, addskill, etc.)
+function addedu() { 
+  // function logic...
+}
+
+function remedu(event) {
+  // function logic...
 }
